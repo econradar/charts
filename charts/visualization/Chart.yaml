@@ -1,9 +1,19 @@
 apiVersion: v2
+annotations:
+  category: Application
 name: visualization
 description: A Helm chart for Kubernetes
-
 type: application
-
-version: 0.1.0
-
+home: https://github.com/econradar
+dependencies:
+  - condition: redis.enabled
+    name: redis
+    repository: https://charts.bitnami.com/bitnami
+    version: 17.x.x
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 2.x.x
 appVersion: "0.1.0"
+version: 0.1.0

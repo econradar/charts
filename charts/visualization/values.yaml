@@ -38,6 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
+  containerPort: 80
   port: 80
 
 ingress:
@@ -80,3 +81,55 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+redisWait:
+  enabled: true
+  extraArgs: ''
+  securityContext: {}
+
+redis:
+  enabled: true
+  nameOverride: ""
+  service:
+    port: 6379
+
+  ## Use password authentication
+  auth:
+    enabled: true
+    ## Name of existing secret object containing the password
+    existingSecret: ""
+    ## Password key to be retrieved from redis secret
+    existingSecretPasswordKey: 'redis-password'
+
+  ## Allowed values: `standalone` or `replication`
+  architecture: standalone
+
+externalRedis:
+  host: "hello"
+  port: 6379
+  password: ""
+  existingSecret: ""
+  existingSecretPasswordKey: 'redis-password'
+
+app:
+  dev:
+    port: 5001
+    processes: 4
+    watchInterval: 1
+  hostPort: 5000
+  title: "Series Chart"
+  storage:
+    baseURL: "https://storage.googleapis.com"
+    dataBucket: ""
+
+extraEnvVars: []
+  ##   - name: FOO
+  ##     value: "bar"
+
+extraEnvVarsCM: ""
+
+extraEnvVarsSecret: ""
+
+extraVolumes: []
+
+extraVolumeMounts: []
