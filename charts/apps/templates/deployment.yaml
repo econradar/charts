@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "visualization.fullname" . }}
+  name: {{ include "apps.fullname" . }}
   labels:
-    {{- include "visualization.labels" . | nindent 4 }}
+    {{- include "apps.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "visualization.selectorLabels" . | nindent 6 }}
+      {{- include "apps.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "visualization.selectorLabels" . | nindent 8 }}
+        {{- include "apps.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "visualization.serviceAccountName" . }}
+      serviceAccountName: {{ include "apps.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
@@ -47,7 +47,7 @@ spec:
                 . /opt/bitnami/scripts/libos.sh
                 . /opt/bitnami/scripts/liblog.sh
                 check_redis_connection() {
-                  local result="$(redis-cli -h {{ include "visualization.redisHost" . }} -p {{ include "visualization.redisPort" . }} {{ .Values.redisWait.extraArgs }} PING)"
+                  local result="$(redis-cli -h {{ include "apps.redisHost" . }} -p {{ include "apps.redisPort" . }} {{ .Values.redisWait.extraArgs }} PING)"
                   if [[ "$result" != "PONG" ]]; then
                     false
                   fi
@@ -59,21 +59,21 @@ spec:
                 else
                     info "Connected to the Redis instance"
                 fi
-          {{- if include "visualization.redis.auth.enabled" . }}
+          {{- if include "apps.redis.auth.enabled" . }}
           env:
             - name: REDISCLI_AUTH
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "visualization.redis.secretName" . }}
-                  key: {{ include "visualization.redis.secretPasswordKey" . }}
+                  name: {{ include "apps.redis.secretName" . }}
+                  key: {{ include "apps.redis.secretPasswordKey" . }}
           {{- end }}
           {{- end }}
-          {{- if and .Values.redis.enabled (include "visualization.redis.auth.enabled" .) }}
+          {{- if and .Values.redis.enabled (include "apps.redis.auth.enabled" .) }}
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "visualization.redis.secretName" . }}
-                  key: {{ include "visualization.redis.secretPasswordKey" . }}
+                  name: {{ include "apps.redis.secretName" . }}
+                  key: {{ include "apps.redis.secretPasswordKey" . }}
           {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -87,15 +87,15 @@ spec:
               protocol: TCP
           env:
             - name: REDIS_HOST
-              value: {{ include "visualization.redisHost" . }}
+              value: {{ include "apps.redisHost" . | quote }}
             - name: REDIS_PORT
-              value: {{ include "visualization.redisPort" . }}
-            {{- if and (not .Values.externalRedis.password) (include "visualization.redis.auth.enabled" .) }}
+              value: {{ include "apps.redisPort" . | quote }}
+            {{- if and (not .Values.externalRedis.password) (include "apps.redis.auth.enabled" .) }}
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "visualization.redis.secretName" . }}
-                  key: {{ include "visualization.redis.secretPasswordKey" . }}
+                  name: {{ include "apps.redis.secretName" . }}
+                  key: {{ include "apps.redis.secretPasswordKey" . }}
             {{- else }}
             - name: REDIS_PASSWORD
               value: {{ .Values.externalRedis.password }}

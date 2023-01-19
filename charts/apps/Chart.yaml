@@ -1,7 +1,7 @@
 apiVersion: v2
 annotations:
   category: Application
-name: visualization
+name: apps
 description: A Helm chart for Kubernetes
 type: application
 home: https://github.com/econradar
