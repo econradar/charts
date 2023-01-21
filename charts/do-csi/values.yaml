@@ -81,7 +81,7 @@ tolerations: []
 
 affinity: {}
 
-doAccessToken: "dop_v1_23c43708f5f89d6fe371b3aa5553179918e0970807ab9a093321ceb92841d497"
+doAccessToken: ""
 
 snapshot:
   enabled: false
