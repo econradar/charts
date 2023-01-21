@@ -91,6 +91,7 @@ kind: StatefulSet
 apiVersion: apps/v1
 metadata:
   name: csi-do-controller
+  namespace: kube-system
 spec:
   serviceName: "csi-do"
   selector:
@@ -193,6 +194,7 @@ kind: ServiceAccount
 apiVersion: v1
 metadata:
   name: csi-do-controller-sa
+  namespace: kube-system
 
 ---
 kind: ClusterRole
@@ -237,6 +239,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: csi-do-controller-sa
+    namespace: kube-system
 roleRef:
   kind: ClusterRole
   name: csi-do-provisioner-role
@@ -273,6 +276,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: csi-do-controller-sa
+    namespace: kube-system
 roleRef:
   kind: ClusterRole
   name: csi-do-attacher-role
@@ -308,6 +312,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: csi-do-controller-sa
+    namespace: kube-system
 roleRef:
   kind: ClusterRole
   name: csi-do-snapshotter-role
@@ -343,6 +348,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: csi-do-controller-sa
+    namespace: kube-system
 roleRef:
   kind: ClusterRole
   name: csi-do-resizer-role
@@ -360,6 +366,7 @@ kind: DaemonSet
 apiVersion: apps/v1
 metadata:
   name: csi-do-node
+  namespace: kube-system
 spec:
   selector:
     matchLabels:
@@ -464,6 +471,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: csi-do-node-sa
+  namespace: kube-system
 
 ---
 
@@ -471,6 +479,7 @@ kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: csi-do-node-driver-registrar-role
+  namespace: kube-system
 rules:
   - apiGroups: [""]
     resources: ["events"]
@@ -485,6 +494,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: csi-do-node-sa
+    namespace: kube-system
 roleRef:
   kind: ClusterRole
   name: csi-do-node-driver-registrar-role
