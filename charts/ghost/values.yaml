@@ -101,6 +101,7 @@ existingSecret: ""
 ghostEmail: ghost@econradar.com
 ghostBlogTitle: Econradar
 ghostHost: ""
+ghostPort: ""
 ghostPath: /
 
 smtpHost: ""

@@ -54,6 +54,8 @@ spec:
               value: {{ printf "http://%s" .Values.ghostHost | quote }}
             - name: database__connection__host
               value: {{ include "ghost.mysqlHost" . | quote }}
+            - name: database__connection__port
+              value: {{ .Values.ghostPort | quote }}
             - name: database__connection__user
               value: {{ include "ghost.mysqlUser" . | quote }}
             - name: database__connection__password
