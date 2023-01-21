@@ -1,3 +1,4 @@
+{{- if .Values.snapshot.enabled }}
 # Copyright 2022 DigitalOcean
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -96,3 +97,4 @@ roleRef:
   kind: ClusterRole
   name: snapshot-controller-role
   apiGroup: rbac.authorization.k8s.io
+{{- end }}
