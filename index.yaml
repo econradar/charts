@@ -69,4 +69,27 @@ entries:
     urls:
     - https://github.com/econradar/charts/releases/download/do-csi-0.1.0/do-csi-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-21T12:09:41.847216003Z"
+  ghost:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-21T13:08:58.090173028Z"
+    dependencies:
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - ghost-database
+      version: 9.x.x
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: A Helm chart for Kubernetes
+    digest: c6ddd66e05d580535230c842b9b8bfb232f5a29c18ea855d53e253913e607100
+    name: ghost
+    type: application
+    urls:
+    - https://github.com/econradar/charts/releases/download/ghost-0.1.0/ghost-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-01-21T13:08:58.090188528Z"
