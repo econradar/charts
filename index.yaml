@@ -27,6 +27,17 @@ entries:
   do-csi:
   - apiVersion: v2
     appVersion: 4.5.0
+    created: "2023-01-21T19:47:23.35370393Z"
+    description: A Container Storage Interface (CSI) Driver for DigitalOcean Block
+      Storage.
+    digest: 5289831d5b5e33c6b2e762f74a34086b5238aa6078a60afe78138449f607ce5e
+    name: do-csi
+    type: application
+    urls:
+    - https://github.com/econradar/charts/releases/download/do-csi-0.1.4/do-csi-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 4.5.0
     created: "2023-01-21T12:09:41.847202603Z"
     description: A Container Storage Interface (CSI) Driver for DigitalOcean Block
       Storage.
@@ -92,4 +103,4 @@ entries:
     urls:
     - https://github.com/econradar/charts/releases/download/ghost-0.1.0/ghost-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-21T13:08:58.090188528Z"
+generated: "2023-01-21T19:47:23.353990127Z"
