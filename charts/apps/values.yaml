@@ -1,135 +1,98 @@
-# Default values for apps.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-
-image:
-  repository: econradar-viz
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+nameOverride: ''
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+image:
+  pullPolicy: IfNotPresent
+  repository: apps
+  tag: 0.1.1
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+commonAnnotations: {}
+commonLabels: {}
 
-podAnnotations: {}
+redis:
+  enabled: false
+  nameOverride: ''
+  auth:
+    password: apps
 
-podSecurityContext: {}
-  # fsGroup: 2000
-
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+redisService:
+  host: localhost
+  port: 6379
 
 service:
   type: ClusterIP
-  containerPort: 80
-  port: 80
+  annotations: {}
+  protocol: https
+  port: 443
+  containerPort: 5000
+  nodePort: null
+
+serviceAccount:
+  create: true
+  name: zimagi-command
+
+psp:
+  create: true
+containerSecurityContext:
+  enabled: true
+  privileged: false
+podSecurityContext:
+  enabled: true
+  fsGroup: 1001
+
+replicaCount: 1
+updateStrategy:
+  type: RollingUpdate
+
+affinity: {}
+podAffinityPreset: ''
+podAntiAffinityPreset: soft
+nodeAffinityPreset:
+  key: ''
+  type: ''
+  values: []
+
+priorityClassName: ''
+nodeSelector: {}
+tolerations: []
+
+resources:
+  limits: {}
+  requests: {}
+
+containerPort: 5000
+livenessProbe:
+  failureThreshold: 1
+  initialDelaySeconds: 60
+  periodSeconds: 5
+  successThreshold: 1
+  timeoutSeconds: 3
+readinessProbe:
+  failureThreshold: 1
+  initialDelaySeconds: 90
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 3
+
+extraEnvVarsCM: []
+extraEnvVarsSecret: []
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 4
+  averageUtilization: 70
 
 ingress:
   enabled: false
-  className: ""
+  className: ''
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
-
-redisWait:
-  enabled: true
-  extraArgs: ''
-  securityContext: {}
-
-redis:
-  enabled: true
-  nameOverride: ""
-  service:
-    port: 6379
-
-  ## Use password authentication
-  auth:
-    enabled: true
-    ## Name of existing secret object containing the password
-    existingSecret: ""
-    ## Password key to be retrieved from redis secret
-    existingSecretPasswordKey: 'redis-password'
-
-  ## Allowed values: `standalone` or `replication`
-  architecture: standalone
-
-externalRedis:
-  host: "hello"
-  port: 6379
-  password: ""
-  existingSecret: ""
-  existingSecretPasswordKey: 'redis-password'
-
-app:
-  dev:
-    port: 5001
-    processes: 4
-    watchInterval: 1
-  hostPort: 5000
-  title: "Series Chart"
-  storage:
-    baseURL: "https://storage.googleapis.com"
-    dataBucket: "downloads.econradar.com"
-
-extraEnvVars: []
-  ##   - name: FOO
-  ##     value: "bar"
-
-extraEnvVarsCM: ""
-
-extraEnvVarsSecret: ""
-
-extraVolumes: []
-
-extraVolumeMounts: []
+  hostname: ''
+  extraHosts: []
+  path: /
+  pathType: ImplementationSpecific
+  extraPaths: []
+  tls: false
+  certManager: false
+  selfSigned: false
+  extraTls: {}
