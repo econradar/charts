@@ -10,9 +10,9 @@ env:
 
 jobs:
   release:
-    permissions:
-      contents: write
+    name: Helm Charts
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
