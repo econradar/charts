@@ -5,6 +5,29 @@ entries:
       category: Application
     apiVersion: v2
     appVersion: 0.1.0
+    created: "2023-01-22T20:11:38.369747118Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.x.x
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: A Helm chart for Kubernetes
+    digest: cf4b4592184de17331ef1436a4ce2f4abf9c4c190a5c1be057260c401313c331
+    home: https://github.com/econradar
+    name: apps
+    type: application
+    urls:
+    - https://github.com/econradar/charts/releases/download/apps-0.1.1/apps-0.1.1.tgz
+    version: 0.1.1
+  - annotations:
+      category: Application
+    apiVersion: v2
+    appVersion: 0.1.0
     created: "2023-01-19T15:44:49.804765436Z"
     dependencies:
     - condition: redis.enabled
@@ -125,4 +148,4 @@ entries:
     urls:
     - https://github.com/econradar/charts/releases/download/ghost-0.1.0/ghost-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-21T22:36:25.680272976Z"
+generated: "2023-01-22T20:11:38.36976772Z"
