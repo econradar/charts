@@ -87,7 +87,7 @@ spec:
             timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
             httpGet:
               scheme: {{ .Values.service.protocol | upper }}
-              path: /
+              path: /status
               port: {{ .Values.service.containerPort }}
           livenessProbe:
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
@@ -97,5 +97,5 @@ spec:
             timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
             httpGet:
               scheme: {{ .Values.service.protocol | upper }}
-              path: /
+              path: /status
               port: {{ .Values.service.containerPort }}
