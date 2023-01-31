@@ -1,0 +1,25 @@
+apiVersion: v2
+version: 2.0.0
+appVersion: 0.1.1
+
+name: dash
+type: application
+description: A Helm chart for deploying a Dash application.
+home: https://github.com/econradar/charts
+
+dependencies:
+  - condition: redis.enabled
+    name: redis
+    repository: https://charts.bitnami.com/bitnami
+    version: 17.x.x
+  - name: zimagi-lib
+    repository: https://charts.zimagi.com
+    version: 0.x.x
+
+maintainers:
+- email: erik@econradar.com
+  name: jagyugyaerik
+  url: https://github.com/jagyugyaerik
+- email: adrian@econradar.com
+  name: adrianwebb
+  url: https://github.com/adrianwebb

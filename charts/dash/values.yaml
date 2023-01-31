@@ -1,0 +1,93 @@
+nameOverride: dash
+
+labels: {}
+annotations: {}
+
+redis:
+  enabled: true
+  auth:
+    password: dash
+
+image:
+  pullSecrets: []
+  pullPolicy: IfNotPresent
+  repository: registry.hub.docker.com
+  image: null
+  tag: null
+
+pvc:
+  claims: {}
+  mounts: {}
+
+deployment:
+  replicaCount: 1
+  updateStrategy:
+    type: RollingUpdate
+
+  priorityClassName: ""
+  affinity: {}
+  podAffinityPreset: ""
+  podAntiAffinityPreset: soft
+  nodeAffinityPreset:
+    type: ""
+    key: ""
+    values: []
+
+  nodeSelector: {}
+  tolerations: []
+  resources:
+    limits: {}
+    requests: {}
+
+  env:
+    REDIS_HOST: '{{ include "dash.redisMaster.fullname" . }}'
+    REDIS_PORT: 6379
+    REDIS_PASSWORD: "{{ .Values.redis.auth.password }}"
+
+  config:
+    - global
+  secrets:
+    - global
+
+  protocol: HTTP
+  port: 5000
+
+  livenessProbe:
+    endpoint: "/status"
+    failureThreshold: 1
+    initialDelaySeconds: 60
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 3
+
+  readinessProbe:
+    endpoint: "/status"
+    failureThreshold: 1
+    initialDelaySeconds: 90
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 4
+  avgCpuUtilization: 70
+
+service:
+  type: ClusterIP
+  protocol: http
+  port: 80
+
+dash:
+  services:
+    gateway:
+      deployment:
+        config:
+          - global
+          - gateway
+      autoscaling:
+        enabled: true
+        minReplicas: 1
+        maxReplicas: 4
+      service:
+        enabled: true

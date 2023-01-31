@@ -1,0 +1,4 @@
+{{/*
+Generate a Dash application
+*/}}
+{{ include "zimagi-lib.app" (list . .Values.dash) }}
