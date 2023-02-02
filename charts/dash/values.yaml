@@ -84,7 +84,6 @@ dash:
       deployment:
         config:
           - global
-          - gateway
       autoscaling:
         enabled: true
         minReplicas: 1
