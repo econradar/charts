@@ -136,3 +136,19 @@ persistence:
   size: 8Gi
   existingClaim: ""
   subPath: ""
+
+livenessProbe:
+  endpoint: /ghost/api/admin/site/
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 3
+
+readinessProbe:
+  endpoint: /ghost/api/admin/site/
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 3
