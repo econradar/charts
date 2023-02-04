@@ -96,6 +96,32 @@ entries:
   dash:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2023-02-04T16:26:37.213743971Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.x.x
+    - name: zimagi-lib
+      repository: https://charts.zimagi.com
+      version: 0.x.x
+    description: A Helm chart for deploying a Dash application.
+    digest: 7cab9a783f33c43f7e966679191018270a0d6d01ccaa589142e3f0f9e5ebdb8c
+    home: https://github.com/econradar/charts
+    maintainers:
+    - email: erik@econradar.com
+      name: jagyugyaerik
+      url: https://github.com/jagyugyaerik
+    - email: adrian@econradar.com
+      name: adrianwebb
+      url: https://github.com/adrianwebb
+    name: dash
+    type: application
+    urls:
+    - https://github.com/econradar/charts/releases/download/dash-2.0.6/dash-2.0.6.tgz
+    version: 2.0.6
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2023-02-04T12:16:43.054906412Z"
     dependencies:
     - condition: redis.enabled
@@ -439,4 +465,4 @@ entries:
     urls:
     - https://github.com/econradar/charts/releases/download/ghost-0.1.0/ghost-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-04T12:16:43.055071928Z"
+generated: "2023-02-04T16:26:37.213963671Z"
