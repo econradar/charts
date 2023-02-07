@@ -335,6 +335,28 @@ entries:
   ghost:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-02-07T08:53:08.912153205Z"
+    dependencies:
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - ghost-database
+      version: 9.x.x
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: A Helm chart for Kubernetes
+    digest: 81818196ec4bee8833e05e2a63617dde887c5e699d6c24f9436ef0c081cb795b
+    name: ghost
+    type: application
+    urls:
+    - https://github.com/econradar/charts/releases/download/ghost-0.1.7/ghost-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-02-06T03:27:03.226178152Z"
     dependencies:
     - condition: mysql.enabled
@@ -487,4 +509,4 @@ entries:
     urls:
     - https://github.com/econradar/charts/releases/download/ghost-0.1.0/ghost-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-06T03:27:03.226221253Z"
+generated: "2023-02-07T08:53:08.912219605Z"
