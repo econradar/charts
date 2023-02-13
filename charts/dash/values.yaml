@@ -17,8 +17,8 @@ image:
   pullSecrets: []
   pullPolicy: IfNotPresent
   repository: registry.hub.docker.com
-  image: null
-  tag: null
+  image: null # No official Docker image (required)
+  tag: null   # No official Docker image (required)
 
 pvc:
   claims: {}
@@ -56,7 +56,7 @@ deployment:
     - global
 
   protocol: HTTP
-  port: 5000
+  port: 80
 
   livenessProbe:
     endpoint: "/status"
