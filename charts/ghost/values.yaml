@@ -87,22 +87,21 @@ service:
   protocol: http
   port: 80
 
-ghost:
-  services:
-    portal:
-      pvc:
-        mounts:
-          "/var/lib/ghost/content": content
+services:
+  portal:
+    pvc:
+      mounts:
+        "/var/lib/ghost/content": content
 
-      autoscaling:
-        enabled: false
+    autoscaling:
+      enabled: false
 
-      service:
-        enabled: true
-      ingress:
-        enabled: false
-        # hosts:
-        #   - host: "${domain}"
-        #   - host: "www.${domain}"
-        # tls:
-        #   - secretName: origin-cert
+    service:
+      enabled: true
+    ingress:
+      enabled: false
+      # hosts:
+      #   - host: "${domain}"
+      #   - host: "www.${domain}"
+      # tls:
+      #   - secretName: origin-cert
