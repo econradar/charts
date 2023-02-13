@@ -1,0 +1,4 @@
+{{/*
+Generate a Ghost application
+*/}}
+{{ include "zimagi-lib.app" (list . .Values.ghost) }}

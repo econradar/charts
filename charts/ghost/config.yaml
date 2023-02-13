@@ -1,0 +1,27 @@
+global:
+  data:
+    NODE_ENV: "${environment}"
+
+    # see https://ghost.org/docs/config/#configuration-options
+    url: "https://${domain}"
+
+    database__client: mysql
+    database__pool__min: 5
+    database__pool__max: 100
+
+    mail__transport: SMTP
+    mail__from: "Support Team <${support_email}>"
+    mail__options__service: Mailgun
+    mail__options__host: smtp.mailgun.org
+    mail__options__port: 465
+    mail__options__secure: true
+
+    logging__level: info
+    logging__transports: [stdout]
+
+    caching__frontend__maxAge: 1
+    caching__contentAPI__maxAge: 1
+    caching__sitemap__maxAge: 1
+    caching__robotstxt__maxAge: 1
+
+    compress: true
