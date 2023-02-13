@@ -13,8 +13,7 @@ mysql:
       size: 10Gi
 
 image:
-  pullSecrets:
-    - registry
+  pullSecrets: []
   pullPolicy: IfNotPresent
   repository: registry.hub.docker.com
   image: ghost
@@ -64,15 +63,15 @@ deployment:
   livenessProbe:
     endpoint: "/ghost/api/admin/site/"
     failureThreshold: 1
-    initialDelaySeconds: 60
-    periodSeconds: 5
+    initialDelaySeconds: 10
+    periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 3
 
   readinessProbe:
     endpoint: "/ghost/api/admin/site/"
     failureThreshold: 1
-    initialDelaySeconds: 90
+    initialDelaySeconds: 10
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 3
