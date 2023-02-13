@@ -84,6 +84,11 @@ service:
   protocol: http
   port: 80
 
+ingress:
+  className: ''
+  hosts: []
+  tls: []
+
 services:
   gateway:
     autoscaling:
