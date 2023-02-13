@@ -334,6 +334,32 @@ entries:
     version: 0.1.0
   ghost:
   - apiVersion: v2
+    appVersion: "5"
+    created: "2023-02-13T01:54:24.773528181Z"
+    dependencies:
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.x.x
+    - name: zimagi-lib
+      repository: https://charts.zimagi.com
+      version: 0.x.x
+    description: A Helm chart for deploying a Ghost application.
+    digest: ab6bed48f27fe503eb2fe78184afe22d3d5bda4df3c2f7cc5433eaeb30849f29
+    home: https://github.com/econradar/charts
+    maintainers:
+    - email: erik@econradar.com
+      name: jagyugyaerik
+      url: https://github.com/jagyugyaerik
+    - email: adrian@econradar.com
+      name: adrianwebb
+      url: https://github.com/adrianwebb
+    name: ghost
+    type: application
+    urls:
+    - https://github.com/econradar/charts/releases/download/ghost-2.0.0/ghost-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-02-07T08:53:08.912153205Z"
     dependencies:
@@ -509,4 +535,4 @@ entries:
     urls:
     - https://github.com/econradar/charts/releases/download/ghost-0.1.0/ghost-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-07T08:53:08.912219605Z"
+generated: "2023-02-13T01:54:24.773600681Z"
