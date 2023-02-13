@@ -17,7 +17,7 @@ global:
     mail__options__secure: true
 
     logging__level: info
-    logging__transports: [stdout]
+    logging__transports: '["stdout"]'
 
     caching__frontend__maxAge: 1
     caching__contentAPI__maxAge: 1
