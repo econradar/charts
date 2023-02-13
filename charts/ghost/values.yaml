@@ -7,6 +7,8 @@ mysql:
   enabled: true
   auth:
     existingSecret: ghost-db # keys: mysql-root-password, mysql-replication-password, mysql-password
+    database: ghost
+    username: ghost
   primary:
     persistence:
       enabled: true
@@ -51,6 +53,8 @@ deployment:
   env:
     database__connection__host: '{{ include "ghost.mysql.fullname" . }}'
     database__connection__port: 3306
+    database__connection__database: "{{ .Values.mysql.auth.database }}"
+    database__connection__user: "{{ .Values.mysql.auth.username }}"
 
   config:
     - global
@@ -85,6 +89,11 @@ service:
   type: ClusterIP
   protocol: http
   port: 80
+
+ingress:
+  className: ''
+  hosts: []
+  tls: []
 
 services:
   portal:
