@@ -15,7 +15,7 @@ mysql:
 image:
   pullSecrets: []
   pullPolicy: IfNotPresent
-  repository: registry.hub.docker.com
+  repository: docker.io
   image: ghost
   tag: 5
 
