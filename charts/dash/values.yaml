@@ -6,7 +6,12 @@ annotations: {}
 redis:
   enabled: true
   auth:
-    password: dash
+    existingSecret: dash-db
+    existingSecretPasswordKey: redis-password
+  master:
+    persistence:
+      enabled: true
+      size: 10Gi
 
 image:
   pullSecrets: []
@@ -36,13 +41,14 @@ deployment:
   nodeSelector: {}
   tolerations: []
   resources:
+    requests:
+      cpu: "100m"
+      memory: "100Mi"
     limits: {}
-    requests: {}
 
   env:
     REDIS_HOST: '{{ include "dash.redisMaster.fullname" . }}'
     REDIS_PORT: 6379
-    REDIS_PASSWORD: "{{ .Values.redis.auth.password }}"
 
   config:
     - global
@@ -81,12 +87,15 @@ service:
 dash:
   services:
     gateway:
-      deployment:
-        config:
-          - global
       autoscaling:
         enabled: true
-        minReplicas: 1
-        maxReplicas: 4
+
       service:
         enabled: true
+      ingress:
+        enabled: false
+        # hosts:
+        #   - host: "${domain}"
+        #   - host: "www.${domain}"
+        # tls:
+        #   - secretName: origin-cert
