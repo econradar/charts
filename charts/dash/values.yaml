@@ -84,18 +84,17 @@ service:
   protocol: http
   port: 80
 
-dash:
-  services:
-    gateway:
-      autoscaling:
-        enabled: true
+services:
+  gateway:
+    autoscaling:
+      enabled: true
 
-      service:
-        enabled: true
-      ingress:
-        enabled: false
-        # hosts:
-        #   - host: "${domain}"
-        #   - host: "www.${domain}"
-        # tls:
-        #   - secretName: origin-cert
+    service:
+      enabled: true
+    ingress:
+      enabled: false
+      # hosts:
+      #   - host: "${domain}"
+      #   - host: "www.${domain}"
+      # tls:
+      #   - secretName: origin-cert
