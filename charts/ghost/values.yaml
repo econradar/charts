@@ -17,16 +17,21 @@ mysql:
 image:
   pullSecrets: []
   pullPolicy: IfNotPresent
-  repository: docker.io
-  image: ghost
-  tag: 5
+  repository: registry.hub.docker.com
+  image: null # Custom Docker image (required)
+  tag: null   # Custom Docker image (required)
 
 pvc:
   claims:
-    content:
+    images:
       accessMode: ReadWriteOnce
-      size: 10Gi
-  mounts: {}
+      size: 5Gi
+    files:
+      accessMode: ReadWriteOnce
+      size: 5Gi
+  mounts:
+    "/var/lib/ghost/content/images": images
+    "/var/lib/ghost/content/files": files
 
 deployment:
   replicaCount: 1
@@ -97,10 +102,6 @@ ingress:
 
 services:
   portal:
-    pvc:
-      mounts:
-        "/var/lib/ghost/content": content
-
     autoscaling:
       enabled: false
 
