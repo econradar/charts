@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GH_API_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GH_CHART_UPDATE_TOKEN }}
   GITHUB_ACTOR: ${{ github.actor }}
 
 jobs:
@@ -37,4 +37,4 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         env:
-          CR_TOKEN: ${{ secrets.GH_API_TOKEN }}
+          CR_TOKEN: ${{ secrets.GH_CHART_UPDATE_TOKEN }}
