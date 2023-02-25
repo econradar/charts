@@ -24,6 +24,10 @@ pvc:
   claims: {}
   mounts: {}
 
+volumes:
+  config: {}
+  secret: {}
+
 deployment:
   replicaCount: 1
   updateStrategy:
