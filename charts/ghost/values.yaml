@@ -33,6 +33,10 @@ pvc:
     "/var/lib/ghost/content/images": images
     "/var/lib/ghost/content/files": files
 
+volumes:
+  config: {}
+  secret: {}
+
 deployment:
   replicaCount: 1
   updateStrategy:
