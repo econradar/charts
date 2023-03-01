@@ -1,9 +1,9 @@
 dependencies:
 - name: redis
   repository: https://charts.bitnami.com/bitnami
-  version: 17.8.0
+  version: 17.8.1
 - name: zimagi-lib
   repository: https://charts.zimagi.com
-  version: 0.0.21
-digest: sha256:f031022472ff0ec6ec4d2c2440f29a54006badbb148b96c7210019b62fbce75f
-generated: "2023-02-26T15:28:47.057347016-05:00"
+  version: 0.0.22
+digest: sha256:829832a4b6bafb5dfe2cab0a44fd7ded64bf80b810aae0310c016e46665085bb
+generated: "2023-02-28T20:31:25.770415059-05:00"

@@ -20,6 +20,9 @@ image:
   image: null # No official Docker image (required)
   tag: null   # No official Docker image (required)
 
+roles: {}
+access: []
+
 pvc:
   claims: {}
   mounts: {}
