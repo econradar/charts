@@ -21,6 +21,9 @@ image:
   image: null # Custom Docker image (required)
   tag: null   # Custom Docker image (required)
 
+roles: {}
+access: []
+
 pvc:
   claims:
     images:
