@@ -1,9 +1,9 @@
 dependencies:
 - name: mysql
   repository: https://charts.bitnami.com/bitnami
-  version: 9.5.0
+  version: 9.5.1
 - name: zimagi-lib
   repository: https://charts.zimagi.com
-  version: 0.0.22
-digest: sha256:02c16d0cb661e276c568ff9efa2e1dc3aeb325e83259e9e6e7b0cc9c365c3570
-generated: "2023-02-28T20:34:51.183225152-05:00"
+  version: 0.0.24
+digest: sha256:ca1ccc215c10e18a1e79a2460cf8321f66e624a89ece019f0efcd59e9b742c80
+generated: "2023-03-02T11:45:47.237734766-05:00"
