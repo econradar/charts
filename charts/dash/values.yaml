@@ -33,6 +33,8 @@ volumes:
 
 deployment:
   replicaCount: 1
+
+  revisionHistoryLimit: 1
   updateStrategy:
     type: RollingUpdate
 
