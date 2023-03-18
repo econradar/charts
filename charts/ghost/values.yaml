@@ -1,5 +1,3 @@
-nameOverride: ghost
-
 labels: {}
 annotations: {}
 
@@ -20,6 +18,8 @@ image:
   repository: registry.hub.docker.com
   image: null # Custom Docker image (required)
   tag: null   # Custom Docker image (required)
+
+serviceAccounts: {}
 
 roles: {}
 access: []
@@ -108,6 +108,7 @@ ingress:
   className: ''
   hosts: []
   tls: []
+  #   - secretName: origin-cert
 
 services:
   portal:
@@ -120,6 +121,4 @@ services:
       enabled: false
       # hosts:
       #   - host: "${domain}"
-      #   - host: "www.${domain}"
-      # tls:
-      #   - secretName: origin-cert
+
